@@ -82,14 +82,14 @@
                             <a href="table.html">
                                 <i class="fas fa-table"></i>Tables</a>
                         </li>
-                        <li>
-                            <a href="promotion.php">
-                                <i class="far fa-check-square"></i>Promotion</a>
-                        </li>
-                        <li>
-                            <a href="fidelite.php">
-                                <i class="fas fa-calendar-alt"></i>Fidelite</a>
-                        </li>
+<li>
+<a href="promotion.php">
+<i class="far fa-check-square"></i>Promotion</a>
+</li>
+<li>
+<a href="fidelite.php">
+<i class="fas fa-calendar-alt"></i>Fidelite</a>
+</li>
                         <li>
                             <a href="map.html">
                                 <i class="fas fa-map-marker-alt"></i>Maps</a>
@@ -394,81 +394,46 @@
 
 
 
-<form action="ajouterpromotion.php" method="POST">
+<form action="ajouterfidelite.php" method="POST">
     
 
 <table>
     
 
 <tr>
-    <td>  <label for="cc-payment" class="control-label mb-1">Reference de promotion</label></td>
+    <td>  <label for="cc-payment" class="control-label mb-1">Reference de la fidelite</label></td>
     <td>
        
-                                                <input  name="idp" type="text" class="form-control" aria-required="true" aria-invalid="false" required >
-                                            </td>
+                                                <input  name="idf" type="text" class="form-control" aria-required="true" aria-invalid="false" required >
+                                            </td></tr>
 
 
 
 <tr>
-     <td>  <label for="cc-payment" class="control-label mb-1">Reference de produit</label></td>
+     <td>  <label for="cc-payment" class="control-label mb-1">Le Client </label></td>
     <td>
        
-                                                <input  name="IDPR" type="text" class="form-control" aria-required="true" aria-invalid="false" required >
-                                            </td>
-
-
-
-</tr>
+                                                <input  name="idc" type="text" class="form-control" aria-required="true" aria-invalid="false" required >
+                                            </td></tr>
 
 <tr>
-     <td>  <label for="cc-payment" class="control-label mb-1">Debut de la promotion</label></td>
+     <td>  <label for="cc-payment" class="control-label mb-1">Les Points </label></td>
     <td>
        
-                                                <input  name="date1" type="date" class="form-control" aria-required="true" aria-invalid="false" required >
-                                            </td>
+                                                <input  name="pts" type="text" class="form-control" aria-required="true" aria-invalid="false" required >
+                                            </td></tr>
 
 
 
-</tr>
-
-<tr>
-     <td>  <label for="cc-payment" class="control-label mb-1">Fin de la promotion</label></td>
-    <td>
-       
-                                                <input  name="date2" type="date" class="form-control" aria-required="true" aria-invalid="false" required >
-                                            </td>
-
-</tr>
 
 
-
-<tr>
-     <td>  <label for="cc-payment" class="control-label mb-1">Pourcentage de la promotion</label></td>
-     <td>
-  <select name="Pourcentage">
-      <option value="10">10%</option>
-      <option value="20">20%</option>
-        <option value="30">30%</option>
-          <option value="35">35%</option>
-            <option value="40">40%</option>
-            <option value="50">50%</option>
-            <option value="60">60%</option>
-            <option value="70">70%</option>
-
-  </select>
-</td>
-
-</tr>
-
-
-<tr>
     <td></td>
     <td></td>
 </tr>
 
 <tr>
 
-<td>Ajouter la promotion</td>
+<td>Ajouter la fidelite</td>
 
 <td> <button  type="submit" class="btn btn-lg btn-info btn-block" value="Ajouter" >Ajouter</td>
 
@@ -497,35 +462,31 @@
     
 
     <tr>
-        <td>Reference promotion</td>
-        <td>Reference Produit</td>
-        <td>Date debut</td>
-        <td>Date Fin</td>
-        <td>Pourcentage</td>
+        <td>Reference </td>
+        <td>Client</td>
+        <td>Points</td>
         <td></td>
  </tr>
 <?php
-require_once "ex3.php";
-$pr = new promotion(" "," ", " "," "," ");
-$list=$pr->affichez();
+require_once "fideliteF.php";
+$pr = new fideliteF();
+$list=$pr->afficherfidelite();
 foreach($list as $row)
 {
 echo'
 
     <tr>
-    <td>'.$row['idpromotion'].'</td>
-    <td>'.$row['idproduit'].'</td>
-    <td>'.$row['datedebut'].'</td>
-    <td>'.$row['datefin'].'</td>
-    <td>'.$row['pourcentage'].'</td>
+    <td>'.$row['ref'].'</td>
+    <td>'.$row['id_client'].'</td>
+    <td>'.$row['point'].'</td>
     <td>
-    <form action="supp.php" method="POST">
+    <form action="supprimerfidelite.php" method="POST">
       <button  type="submit" class="btn btn-lg btn-info btn-block" value="Supprimer" >Supprimer</button>
-      <input type="hidden" name="idpr" value="'.$row['idpromotion'].'">
+      <input type="hidden" name="ref" value="'.$row['ref'].'">
     </form>
-    <form action="update.php" method="POST">
+    <form action="updateF.php" method="POST">
       <button  type="submit" class="btn btn-lg btn-info btn-block" value="Modifier" >Modifier</button>
-      <input type="hidden" name="idpr" value="'.$row['idpromotion'].'">
+      <input type="hidden" name="ref" value="'.$row['ref'].'">
     </form>
     </td>
 

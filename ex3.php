@@ -38,6 +38,21 @@ $list=$co->query($sql);
 return $list;
 
 }
+ 
+    function getPromotion($id)
+    {
+        $host='localhost';
+        $user2='root';
+        $pass='';
+        $db='promotion';
+        $occ=0;
+        $co = new PDO("mysql:host=$host;dbname=$db", $user2, $pass);
+        $sql = "SELECT * FROM promotion where idpromotion='".$id."'";
+        $list=$co->query($sql);
+        return $list;
+        
+    }
+    
 function Supprimez($idp)
 {
 $host='localhost';
@@ -58,7 +73,7 @@ function Modifier($idp,$idpr,$date1,$date2,$pourcentage)
 $host='localhost';
 $user2='root';
 $pass='';
-$db='mydb';
+$db='promotion';
 
 $co = new PDO("mysql:host=$host;dbname=$db", $user2, $pass);
 $sql = "UPDATE promotion SET idproduit='$idpr' , datedebut='$date1' ,datefin='$date2' , pourcentage='$pourcentage' WHERE idpromotion='$idp'";
